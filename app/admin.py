@@ -15,4 +15,5 @@ admin.site.register(Veiculo)
 admin.site.register(Insumo)
 admin.site.register(Equipamento)
 admin.site.register(ProdutoEstoque)
+admin.site.register(Suino)
 

@@ -75,16 +75,32 @@ class Vacina(models.Model):
 
 
 class Animal(models.Model):
-    especie = models.CharField(max_length=50)
+    ESPECIE_OPC = [
+        ('suíno','Suíno'),
+        ('Suíno','Bovino'),
+        ('Equino','Equino'),
+        ('Aves','Aves'),
+        ('Caprino','Caprino'),
+        ('Coelho','Coelho')
+
+    ]
+    especie = models.CharField(max_length=50,choices = ESPECIE_OPC)
     nome = models.CharField(max_length=100)
     identificacao = models.CharField(max_length=100)
     data_nasc = models.DateField()
     vacinacao = models.ForeignKey(Vacina, on_delete=models.SET_NULL, null=True)
-    genero = models.CharField(max_length=10)
+    genero_opcoes = [
+        ('M','Macho'),
+        ('F','Fêmea')
+    ]
+    genero = models.CharField(max_length=10,choices = genero_opcoes)
     data_inseminacao = models.DateField(null=True, blank=True)
     peso = models.FloatField()
-    raca = models.CharField(max_length=50)
-
+    raca_opcoes = [
+        ('D','Duroc'),
+        ('G','Gilt')
+    ]
+    raca = models.CharField(max_length=50,choices = raca_opcoes)
     def __str__(self):
         return f"{self.nome} - {self.identificacao}"
 
@@ -116,13 +132,11 @@ class Lavoura(models.Model):
 class TransacaoFinanceira(models.Model):
     data = models.DateField(verbose_name="Data da Transação")
     tipo = models.CharField(max_length=50)
-    categoria = models.CharField(max_length=50)
-    descricao = models.TextField()
+    descricao = models.TextField(max_length = 250)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     forma_pagamento = models.CharField(max_length=50)
     responsavel = models.CharField(max_length=100)
     fornecedor_cliente = models.ForeignKey(Fornecedor, on_delete=models.SET_NULL, null=True)
-    status = models.CharField(max_length=50)
     observacoes = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -218,3 +232,12 @@ class ProdutoEstoque(models.Model):
     class Meta:
         verbose_name = "Estoque"
         verbose_name_plural = "Estoques"
+# Espécies de Animais
+class Suino(models.Model):
+    nome = models.CharField(max_length=100)
+    identificacao = models.CharField(max_length=50)
+    data_nascimento = models.DateField()
+    peso = models.FloatField()
+
+    def __str__(self):
+        return f"{self.nome} - {self.identificacao}"

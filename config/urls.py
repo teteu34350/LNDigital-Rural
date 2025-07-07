@@ -5,5 +5,9 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
-    path('animais/',AnimalListView.as_view(),name='animais')
+    path('animais/',AnimalListView.as_view(),name='animais'),
+    path('especieanimal/',TiposAnimal.as_view(),name='especieanimal'),
+    path('suino/', SuinoView.as_view(), name='suino'),
+     path('suino/cadastrar/', cadastrar_suino, name='suino'),
+
 ]
