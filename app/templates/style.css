@@ -1,0 +1,73 @@
+     /* CSS personalizado para a barra lateral */
+     .sidebar {
+        height: 100vh; /* Altura total da viewport */
+        width: 250px; /* Largura da barra lateral */
+        position: fixed; /* Fixa a barra lateral */
+        top: 0;
+        left: 0;
+        background-color: #388e3c; /* Um verde um pouco mais escuro que o bg-success para contraste */
+        padding-top: 20px;
+        color: #fff; /* Cor do texto para contraste */
+        overflow-x: hidden; /* Esconde overflow horizontal */
+        z-index: 1030; /* Garante que a sidebar fique acima de outros elementos se necessário */
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Sombra sutil */
+    }
+
+    .sidebar .navbar-brand {
+        font-size: 1.5rem;
+        color: #fff;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        display: block;
+    }
+
+    .sidebar .nav-link {
+        padding: 10px 20px;
+        color: rgba(255, 255, 255, 0.7); /* Cor do link normal */
+        transition: all 0.3s ease;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-item.active .nav-link {
+        color: #fff; /* Cor do link ao passar o mouse ou ativo */
+        background-color: #2e7d32; /* Cor de fundo ao passar o mouse */
+    }
+
+    /* Ajusta o conteúdo principal para não ficar por baixo da sidebar */
+    .main-content {
+        margin-left: 250px; /* Margem esquerda igual à largura da sidebar */
+        padding: 20px;
+        /* Seções dos cards com display flex para organizar */
+        display: flex;
+        flex-wrap: wrap; /* Permite que os cards quebrem linha */
+        gap: 20px; /* Espaçamento entre os cards */
+    }
+
+    /* Estilo para os cards */
+    .card {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border: none;
+        flex: 0 0 calc(33.333% - 20px); /* 3 cards por linha, ajustável */
+        max-width: calc(33.333% - 20px);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    /* Responsividade básica para telas menores */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 0; /* Esconde a sidebar em telas pequenas por padrão */
+            padding-top: 0;
+        }
+        .main-content {
+            margin-left: 0; /* Remove a margem em telas pequenas */
+        }
+        /* Você pode adicionar um botão para "abrir" a sidebar em mobile, usando JavaScript */
+        .card {
+            flex: 0 0 calc(100% - 20px); /* 1 card por linha em telas pequenas */
+            max-width: calc(100% - 20px);
+        }
+    }
