@@ -9,11 +9,26 @@ class IndexView(View):
         return render(request, 'index.html')
     def post(self, request):
         pass
-class TiposAnimal(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'especieanimal.html')
-    def post(self, request):
-      pass
+class AnimalListView(View):
+    def get(self, request):
+        animais = Animal.objects.all()
+
+        suinos_count = Animal.objects.filter(especie__icontains='su').count()
+        bovinos_count = Animal.objects.filter(especie__icontains='bovi').count()
+        equinos_count = Animal.objects.filter(especie__icontains='equin').count()
+        caprinos_count = Animal.objects.filter(especie__icontains='caprin').count()
+
+        print(f"Suinos: {suinos_count},Bovinos:{bovinos_count},Equinos:{equinos_count}")
+
+        return render(request, 'animal.html', {
+            'animais': animais,
+            'suinos_count': suinos_count,
+            'bovinos_count': bovinos_count,
+            'equinos_count': equinos_count,
+            'caprinos_count': caprinos_count,
+
+        })
+    
 class SuinoView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'suino.html')
@@ -24,10 +39,6 @@ class UsuarioListView(View):
         usuarios = Usuario.objects.all()
         return render(request, 'usuarios/lista.html', {'usuarios': usuarios})
 
-class AnimalListView(View):
-    def get(self, request):
-        animais = Animal.objects.all()
-        return render(request, 'animal.html', {'animais': animais})
 
 class LavouraListView(View):
     def get(self, request):
@@ -94,3 +105,5 @@ def cadastrar_suino(request):
         form = SuinoForm()
     
     return render(request, 'suino.html', {'form': form})
+
+

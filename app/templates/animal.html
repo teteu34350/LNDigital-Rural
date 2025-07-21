@@ -2,70 +2,163 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-initial-scale=1.0">
-    <title>Animais</title>
-    <!-- Incluindo Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css
-/bootstrap.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animais - LNDigital Rural</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f4ec;
+            /* Cor de fundo clara */
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #4caf50;
+            /* Muted Green */
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #e8f5e9 !important;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        h2 {
+            color: #1b5e20;
+            font-weight: 600;
+        }
+
+        table {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #a5d6a7;
+        }
+
+        th {
+            color: #1b5e20;
+            font-weight: 600;
+        }
+
+        td {
+            color: #2e7d32;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark
-bg-success">
-        <a class="navbar-brand" href="/">LNDigital Rural</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/">Home</a>
-                </li>
-                    <a class="nav-link text-dark" href="/admin/">Administração</a>
-                </li>
-            </ul>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">LNDigital Rural</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light rounded"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/">Administração</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container mt-5">
+
+    <div class="container">
         <h2 class="mb-4">Tabela de Animais</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Espécie</th>
-                    <th scope="col">Identificação</th>
-                    <th scope="col">Data de Nascimento</th>
-                    <th scope="col">Genêro</th>
-                    <th scope="col">Data Inseminação</th>
-                    <th scope="col">Peso</th>
-                    <th scope="col">Raça</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for animal in animais %}
-                <tr>
-                    <td>{{ animal.nome }}</td>
-                    <td>{{ animal.especie }}</td>
-                    <td>{{ animal.identificacao }}</td>
-                    <td>{{ animal.data_nasc }}</td>
-                    <td>{{ animal.genero }}</td>
-                    <td>{{ animal.data_inseminacao }}</td>
-                    <td>{{ animal.peso }}</td>
-                    <td>{{ animal.raca }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Espécie</th>
+                        <th>Identificação</th>
+                        <th>Data de Nascimento</th>
+                        <th>Gênero</th>
+                        <th>Data Inseminação</th>
+                        <th>Peso</th>
+                        <th>Raça</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for animal in animais %}
+                    <tr>
+                        <td>{{ animal.nome }}</td>
+                        <td>{{ animal.especie }}</td>
+                        <td>{{ animal.identificacao }}</td>
+                        <td>{{ animal.data_nasc }}</td>
+                        <td>{{ animal.genero }}</td>
+                        <td>{{ animal.data_inseminacao }}</td>
+                        <td>{{ animal.peso }}</td>
+                        <td>{{ animal.raca }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- Incluindo jQuery e Bootstrap JS -->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-    </html>
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJKYF26rtJ75xoN9g_5c8U7FQOSFTXkzSSatgEcMEltZuOXSetCnPpT_XkWUpcpr7IilKYkQHKgi8iRZ1E62g3JA"
+            class="card-img-top" alt="Porco">
+        <div class="card-body">
+            <h5 class="card-title">Suínos</h5>
+            <p class="card-text">{{ suinos_count }}</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="https://blog.agroline.com.br/wp-content/uploads/2024/05/curiosidade_sobre_vacas-1100x1067.jpg"
+            class="card-img-top" alt="Porco">
+        <div class="card-body">
+            <h5 class="card-title">Bovinos</h5>
+            <p class="card-text">{{ bovinos_count }}</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.petz.com.br/blog/wp-content/uploads/2023/07/o-que-sao-equinos2.jpg"
+            class="card-img-top" alt="Porco">
+        <div class="card-body">
+            <h5 class="card-title">Equinos</h5>
+            <p class="card-text">{{ equinos_count }}</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSyQVxqhyLVTecsKvBNBinv2AznAb3JZVGOH-xkhxkadzhmAOHglSaGfvvdadbEU-jp1XrZBowNH6DkGw0"
+            class="card-img-top" alt="Porco">
+        <div class="card-body">
+            <h5 class="card-title">Caprinos</h5>
+            <p class="card-text">{{ caprinos_count }}</p>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

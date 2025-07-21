@@ -65,6 +65,7 @@ class Vacina(models.Model):
     data_fabricacao = models.DateField(null=True, blank=True)
     validade = models.DateField(null=True, blank=True)
     descricao = models.TextField(null=True, blank=True)
+    
 
     def __str__(self):
         return self.nome
@@ -77,7 +78,7 @@ class Vacina(models.Model):
 class Animal(models.Model):
     ESPECIE_OPC = [
         ('suíno','Suíno'),
-        ('Suíno','Bovino'),
+        ('Bovino','Bovino'),
         ('Equino','Equino'),
         ('Aves','Aves'),
         ('Caprino','Caprino'),
@@ -88,7 +89,7 @@ class Animal(models.Model):
     nome = models.CharField(max_length=100)
     identificacao = models.CharField(max_length=100)
     data_nasc = models.DateField()
-    vacinacao = models.ForeignKey(Vacina, on_delete=models.SET_NULL, null=True)
+    vacinacao = models.ForeignKey(Vacina, on_delete=models.SET_NULL, null=True,blank=True)
     genero_opcoes = [
         ('M','Macho'),
         ('F','Fêmea')
