@@ -10,14 +10,11 @@
     <style>
         body {
             background-color: #f0f4ec;
-            /* Cor de fundo clara */
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Navbar */
         .navbar {
             background-color: #4caf50;
-            /* Muted Green */
         }
 
         .navbar-brand,
@@ -34,7 +31,7 @@
             margin-top: 80px;
         }
 
-        h2 {
+        h2, h4 {
             color: #1b5e20;
             font-weight: 600;
         }
@@ -59,17 +56,21 @@
             color: #2e7d32;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .table {
-                font-size: 0.85rem;
-            }
+        .btn-adicionar {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-adicionar:hover {
+            background-color: #66bb6a;
         }
     </style>
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">LNDigital Rural</a>
@@ -91,72 +92,41 @@
     </nav>
 
     <div class="container">
-        <h2 class="mb-4">Tabela de Animais</h2>
-        <div class="table-responsive">
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Espécie</th>
-                        <th>Identificação</th>
-                        <th>Data de Nascimento</th>
-                        <th>Gênero</th>
-                        <th>Data Inseminação</th>
-                        <th>Peso</th>
-                        <th>Raça</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for animal in animais %}
-                    <tr>
-                        <td>{{ animal.nome }}</td>
-                        <td>{{ animal.especie }}</td>
-                        <td>{{ animal.identificacao }}</td>
-                        <td>{{ animal.data_nasc }}</td>
-                        <td>{{ animal.genero }}</td>
-                        <td>{{ animal.data_inseminacao }}</td>
-                        <td>{{ animal.peso }}</td>
-                        <td>{{ animal.raca }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <h2 class="mb-4">Gerenciamento de Animais</h2>
+        <a href="{% url 'adicionar_animal' %}" class="btn btn-adicionar">
+            <i class="bi bi-plus-circle"></i> Adicionar Animal
+        </a>
 
-    <div class="card" style="width: 18rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJKYF26rtJ75xoN9g_5c8U7FQOSFTXkzSSatgEcMEltZuOXSetCnPpT_XkWUpcpr7IilKYkQHKgi8iRZ1E62g3JA"
-            class="card-img-top" alt="Porco">
-        <div class="card-body">
-            <h5 class="card-title">Suínos</h5>
-            <p class="card-text">{{ suinos_count }}</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="https://blog.agroline.com.br/wp-content/uploads/2024/05/curiosidade_sobre_vacas-1100x1067.jpg"
-            class="card-img-top" alt="Porco">
-        <div class="card-body">
-            <h5 class="card-title">Bovinos</h5>
-            <p class="card-text">{{ bovinos_count }}</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="https://www.petz.com.br/blog/wp-content/uploads/2023/07/o-que-sao-equinos2.jpg"
-            class="card-img-top" alt="Porco">
-        <div class="card-body">
-            <h5 class="card-title">Equinos</h5>
-            <p class="card-text">{{ equinos_count }}</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSyQVxqhyLVTecsKvBNBinv2AznAb3JZVGOH-xkhxkadzhmAOHglSaGfvvdadbEU-jp1XrZBowNH6DkGw0"
-            class="card-img-top" alt="Porco">
-        <div class="card-body">
-            <h5 class="card-title">Caprinos</h5>
-            <p class="card-text">{{ caprinos_count }}</p>
-        </div>
-    </div>
-
+      {% for especie, grupo in animais_por_especie.items %}
+  <h4>{{ especie|title }}</h4>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Identificação</th>
+        <th>Data Nasc.</th>
+        <th>Gênero</th>
+        <th>Inseminação</th>
+        <th>Peso</th>
+        <th>Raça</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for animal in grupo %}
+        <tr>
+          <td>{{ animal.nome }}</td>
+          <td>{{ animal.identificacao }}</td>
+          <td>{{ animal.data_nasc }}</td>
+          <td>{{ animal.genero }}</td>
+          <td>{{ animal.data_inseminacao }}</td>
+          <td>{{ animal.peso }}</td>
+          <td>{{ animal.raca }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

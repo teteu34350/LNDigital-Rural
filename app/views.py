@@ -1,44 +1,38 @@
-from django.shortcuts import render,redirect,get_object_or_404
-from .models import *
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Animal, Usuario, Lavoura, Doenca, TransacaoFinanceira, Funcionario, Atividade, Veiculo, Insumo, Equipamento, ProdutoEstoque, Fornecedor, Vacina # Importe todos os modelos que você usa
 from django.views import View
 from django.contrib import messages
-from .forms import *
+from .forms import AnimalForm # Importe o formulário AnimalForm
+from collections import defaultdict
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'index.html')
     def post(self, request):
         pass
+
 class AnimalListView(View):
     def get(self, request):
         animais = Animal.objects.all()
+        animais_por_especie = defaultdict(list)  # Dicionário onde cada valor é uma lista
 
-        suinos_count = Animal.objects.filter(especie__icontains='su').count()
-        bovinos_count = Animal.objects.filter(especie__icontains='bovi').count()
-        equinos_count = Animal.objects.filter(especie__icontains='equin').count()
-        caprinos_count = Animal.objects.filter(especie__icontains='caprin').count()
-
-        print(f"Suinos: {suinos_count},Bovinos:{bovinos_count},Equinos:{equinos_count}")
+        for animal in animais:
+            animais_por_especie[animal.especie].append(animal)
 
         return render(request, 'animal.html', {
-            'animais': animais,
-            'suinos_count': suinos_count,
-            'bovinos_count': bovinos_count,
-            'equinos_count': equinos_count,
-            'caprinos_count': caprinos_count,
-
+            'animais_por_especie': animais_por_especie,
         })
-    
+
 class SuinoView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'suino.html')
     def post(self, request):
-      pass
+        pass
+
 class UsuarioListView(View):
     def get(self, request):
         usuarios = Usuario.objects.all()
         return render(request, 'usuarios/lista.html', {'usuarios': usuarios})
-
 
 class LavouraListView(View):
     def get(self, request):
@@ -94,16 +88,17 @@ class VacinaListView(View):
     def get(self, request):
         vacinas = Vacina.objects.all()
         return render(request, 'vacinas/lista.html', {'vacinas': vacinas})
-# Views para adicionar animais 
-def cadastrar_suino(request):
+
+# Views para adicionar animais
+def adicionar_animal(request):
     if request.method == 'POST':
-        form = SuinoForm(request.POST)
+        form = AnimalForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('suino')  
+            messages.success(request, 'Animal adicionado com sucesso!') # Adiciona uma mensagem de sucesso
+            return redirect('lista_animais')  # Redireciona para a lista de animais após adicionar
+        else:
+            messages.error(request, 'Erro ao adicionar animal. Verifique os dados.') # Adiciona mensagem de erro
     else:
-        form = SuinoForm()
-    
-    return render(request, 'suino.html', {'form': form})
-
-
+        form = AnimalForm()
+    return render(request, 'animais/adicionar_animal.html', {'form': form}) # Caminho do template corrigido
