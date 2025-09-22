@@ -77,15 +77,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'LNDR',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',  # mudar de sqlite3 para postgresql
+        'NAME': 'LNDR',       # nome do banco que você criou no pgAdmin
+        'USER': 'postgres',   # seu usuário do PostgreSQL
+        'PASSWORD': '123456', # sua senha
+        'HOST': 'localhost',  # ou IP do servidor do PostgreSQL
+        'PORT': '5432',       # porta padrão do PostgreSQL
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

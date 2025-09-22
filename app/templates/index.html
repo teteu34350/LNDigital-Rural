@@ -1,359 +1,477 @@
-Alright, here's the code with a refreshed, more modern, and earthy color palette. I've focused on creating a cohesive
-and visually pleasing design that still feels natural for a rural theme.
-
-This version uses:
-
-* **Deep Forest Green** for the sidebar.
-* **Muted Green** for the header and primary accents.
-* **Soft, Light Greens** for text and highlights.
-* **Warm, subtle background** for the main content area.
-
------
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LNDigital Rural - Dashboard</title>
-    <link rel="shortcut icon" href="static/Logo-LNDigitalRural.png" type="image/x-icon" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNDigital Rural - Página Inicial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-green: #4a7c59;
+            --secondary-green: #6ba777;
+            --light-green: #8bc34a;
+            --dark-green: #2e5233;
+            --sidebar-bg: #4a7c59;
+            --header-bg: #6ba777;
+        }
+
         body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4ec;
-            /* A very light, natural green-beige */
-        }
-
-        .logo {
-            height: 120px;
-            width: 120px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
-            display: block;
+            padding: 0;
         }
 
-        /* Container do link da logo */
-        .sidebar-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Sidebar */
         .sidebar {
-            width: 280px;
-            min-height: 100vh;
-            background-color: #2e7d32;
-            /* Deep Forest Green */
-            color: #e8f5e9;
-            /* Very light green-white */
             position: fixed;
             top: 0;
             left: 0;
-            padding: 1.5rem 1rem;
+            height: 100vh;
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            z-index: 1000;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
         }
 
-        .sidebar a.nav-link {
-            color: #e8f5e9;
-            /* Very light green-white */
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        .sidebar .logo {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .sidebar a.nav-link.active,
-        .sidebar a.nav-link:hover {
-            background-color: #43a047;
-            /* Slightly brighter green for hover/active */
-            color: white;
-            border-radius: 6px;
+        .sidebar .logo i {
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
-        .sidebar hr {
-            border-color: #43a047;
-            /* Matching the hover color */
-            margin: 1rem 0;
-        }
-
-        /* Header */
-        header {
-            height: 56px;
-            background-color: #4caf50;
-            /* Muted Green */
-            color: white;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 280px;
-            right: 0;
-            z-index: 1030;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-
-        header h1 {
-            font-size: 1.25rem;
-            margin-left: 1rem;
-            user-select: none;
-        }
-
-        /* Main content */
-        main {
-            margin-left: 280px;
-            padding: 72px 24px 24px;
-            min-height: 100vh;
-        }
-
-        /* Cards estilos */
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            /* Softer shadow */
-            transition: box-shadow 0.3s ease;
-            border: none;
-            /* Remove default border */
-        }
-
-        .card:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-title {
-            color: #1b5e20;
-            /* Darker green for titles */
+        .sidebar .logo h5 {
+            margin: 0;
             font-weight: 600;
         }
 
-        /* Botões estilo dashboard */
-        .btn-dashboard {
-            background-color: #4caf50;
-            /* Muted Green */
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .welcome-section h1 {
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-green);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h5 {
+            color: var(--dark-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
             color: white;
             border-radius: 6px;
-            transition: background-color 0.3s ease;
-            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
-        .btn-dashboard:hover {
-            background-color: #66bb6a;
-            /* Lighter green on hover */
+        .btn-primary-custom:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
             color: white;
+            text-decoration: none;
         }
 
-        /* Placeholder gráfico */
-        .chart-placeholder {
-            height: 180px;
-            background: linear-gradient(135deg, #a5d6a7 25%, #81c784 75%);
-            /* Green gradient */
-            border-radius: 8px;
-            margin-bottom: 1rem;
+        .footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
         }
 
-        /* Tabela simples */
-        table {
+        .footer h6 {
+            color: var(--light-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
             font-size: 0.9rem;
         }
 
-        /* Scroll dentro da sidebar para o dropdown do usuário */
-        .dropdown-menu {
-            background-color: #2e7d32;
-            /* Deep Forest Green, matching sidebar */
-            border: none;
-            color: #e8f5e9;
-        }
-
-        .dropdown-item {
-            color: #e8f5e9;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: #43a047;
-            /* Matching sidebar hover */
+        .footer a:hover {
             color: white;
+        }
+
+        .social-links a {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--light-green);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+
+            .welcome-section {
+                padding: 30px 20px;
+            }
+
+            .feature-card {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
-
 <body>
+    <!-- Sidebar -->
     <nav class="sidebar">
-        <a href="#" class="sidebar-logo text-decoration-none text-white">
-            <img src="static/Logo-LNDigitalRural.png" alt="Logo" class="logo" />
-        </a>
-        <hr />
-        <ul class="nav nav-pills flex-column mb-auto">
+        <div class="logo">
+            <i class="bi bi-leaf"></i>
+            <h5>LNDigital<br>Rural</h5>
+        </div>
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <i class="bi bi-house-door-fill me-2"></i> Dashboard
+                <a class="nav-link active" href="index.html">
+                    <i class="bi bi-house"></i>
+                    Início
                 </a>
             </li>
-            <li>
-                <a href="animais/" class="nav-link">
-                    <i class="bi bi-bullseye me-2"></i> Animais
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-currency-exchange me-2"></i> Transações
+            <li class="nav-item">
+                <a class="nav-link" href="animais/">
+                    <i class="bi bi-heart"></i>
+                    Animais
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-people me-2"></i> Pessoas
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'transacoes' %}">
+                    <i class="bi bi-currency-dollar"></i>
+                    Transações
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-tree me-2"></i> Lavouras
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pessoas' %}">
+                    <i class="bi bi-people"></i>
+                    Pessoas
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-box-seam me-2"></i> Estoque
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'lavouras' %}">
+                    <i class="bi bi-tree"></i>
+                    Lavouras
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-truck me-2"></i> Veículos
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'estoque' %}">
+                    <i class="bi bi-box"></i>
+                    Estoque
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'veiculos' %}">
+                    <i class="bi bi-truck"></i>
+                    Veículos
                 </a>
             </li>
         </ul>
-        <hr />
-        <div class="dropdown mt-auto">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="User" width="32" height="32" class="rounded-circle me-2" />
-                <strong>mdo</strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Configurações</a></li>
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
-                <li>
-                    <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
-            </ul>
-        </div>
     </nav>
 
-    <header>
-        <h1>LNDigital Rural - Dashboard</h1>
-    </header>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">LNDigital Rural - Gestão Inteligente para o Campo</h4>
+                <a href="dashboard.html" class="btn btn-primary-custom">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    Acessar Dashboard
+                </a>
+            </div>
+        </div>
 
-    <main>
-        <div class="container-fluid">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5 class="card-title">Animais Cadastrados</h5>
-                        <p class="display-4 text-success">145</p>
-                        <a href="animais/" class="btn btn-dashboard">Gerenciar</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5 class="card-title">Previsão do Tempo</h5>
-                        <div class="chart-placeholder"></div>
-                        <a href="https://www.climatempo.com.br/previsao-do-tempo/15-dias/cidade/742/muzambinho-mg"
-                            target="_blank" class="btn btn-dashboard">Ver Detalhes</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5 class="card-title">Preços Agrícolas</h5>
-                        <table class="table table-striped table-sm mb-3">
-                            <thead>
-                                <tr>
-                                    <th>Produto</th>
-                                    <th>Preço (R$)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Soja</td>
-                                    <td>140,00</td>
-                                </tr>
-                                <tr>
-                                    <td>Milho</td>
-                                    <td>60,00</td>
-                                </tr>
-                                <tr>
-                                    <td>Trigo</td>
-                                    <td>70,00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="https://news.agrofy.com.br/cotacoes" target="_blank" class="btn btn-dashboard">Ver
-                            Mais</a>
-                    </div>
+        <!-- Content -->
+        <div class="content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Bem-vindo ao LNDigital Rural</h1>
+                <p>
+                    Transforme a gestão da sua propriedade rural com nossa plataforma completa e intuitiva. 
+                    Controle animais, monitore transações, gerencie pessoas, acompanhe lavouras, organize estoque 
+                    e mantenha seus veículos sempre em dia. Tudo em um só lugar, com a tecnologia que o campo merece.
+                </p>
+                <div class="mt-4">
+                    <a href="dashboard.html" class="btn btn-primary-custom me-3">
+                        <i class="bi bi-speedometer2 me-2"></i>
+                        Começar Agora
+                    </a>
+                    <a href="#funcionalidades" class="btn btn-outline-secondary">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Saiba Mais
+                    </a>
                 </div>
             </div>
 
-            <div class="row mt-4 g-4">
-                <div class="col-12">
-                    <div class="card p-3">
-                        <h5 class="card-title">Últimas Transações</h5>
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Descrição</th>
-                                    <th>Tipo</th>
-                                    <th>Valor (R$)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>01/07/2025</td>
-                                    <td>Compra de fertilizantes</td>
-                                    <td>Despesa</td>
-                                    <td class="text-danger">- R$ 1.200,00</td>
-                                </tr>
-                                <tr>
-                                    <td>05/07/2025</td>
-                                    <td>Venda de soja</td>
-                                    <td>Receita</td>
-                                    <td class="text-success">+ R$ 5.800,00</td>
-                                </tr>
-                                <tr>
-                                    <td>10/07/2025</td>
-                                    <td>Manutenção do trator</td>
-                                    <td>Despesa</td>
-                                    <td class="text-danger">- R$ 450,00</td>
-                                </tr>
-                                <tr>
-                                    <td>12/07/2025</td>
-                                    <td>Pagamento de funcionário</td>
-                                    <td>Despesa</td>
-                                    <td class="text-danger">- R$ 2.100,00</td>
-                                </tr>
-                                <tr>
-                                    <td>15/07/2025</td>
-                                    <td>Venda de milho</td>
-                                    <td>Receita</td>
-                                    <td class="text-success">+ R$ 3.600,00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" class="btn btn-dashboard">Ver Todas</a>
+            <!-- Features Section -->
+            <div id="funcionalidades">
+                <h3 class="text-center mb-4" style="color: var(--primary-green); font-weight: 600;">
+                    Principais Funcionalidades
+                </h3>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-heart"></i>
+                            <h5>Gestão de Animais</h5>
+                            <p>
+                                Controle completo do seu rebanho com registro de saúde, 
+                                vacinação e acompanhamento individual de cada animal.
+                            </p>
+                            <a href="animal.html" class="btn btn-primary-custom btn-sm">
+                                Gerenciar Animais
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-currency-dollar"></i>
+                            <h5>Controle Financeiro</h5>
+                            <p>
+                                Monitore receitas, despesas e fluxo de caixa da propriedade 
+                                com relatórios detalhados e análises financeiras.
+                            </p>
+                            <a href="transacoes.html" class="btn btn-primary-custom btn-sm">
+                                Ver Transações
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-tree"></i>
+                            <h5>Manejo de Lavouras</h5>
+                            <p>
+                                Planeje plantios, monitore crescimento e otimize a 
+                                produtividade das suas culturas com dados precisos.
+                            </p>
+                            <a href="lavouras.html" class="btn btn-primary-custom btn-sm">
+                                Gerenciar Lavouras
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-people"></i>
+                            <h5>Gestão de Pessoas</h5>
+                            <p>
+                                Organize informações de funcionários, fornecedores e 
+                                clientes em um sistema integrado e eficiente.
+                            </p>
+                            <a href="pessoas.html" class="btn btn-primary-custom btn-sm">
+                                Gerenciar Pessoas
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-box"></i>
+                            <h5>Controle de Estoque</h5>
+                            <p>
+                                Mantenha o controle de insumos, equipamentos e produtos 
+                                com alertas de reposição e histórico de movimentação.
+                            </p>
+                            <a href="estoque.html" class="btn btn-primary-custom btn-sm">
+                                Gerenciar Estoque
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="bi bi-truck"></i>
+                            <h5>Frota de Veículos</h5>
+                            <p>
+                                Acompanhe manutenções, combustível e documentação 
+                                de tratores, caminhões e demais veículos da propriedade.
+                            </p>
+                            <a href="veiculos.html" class="btn btn-primary-custom btn-sm">
+                                Gerenciar Veículos
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <h6>LNDigital Rural</h6>
+                        <p>
+                            Tecnologia inovadora para a gestão completa da sua propriedade rural. 
+                            Simplifique processos e maximize resultados.
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <h6>Contato</h6>
+                        <p>
+                            <i class="bi bi-envelope me-2"></i>
+                            contato@lndigitalrural.com.br
+                        </p>
+                        <p>
+                            <i class="bi bi-telephone me-2"></i>
+                            (11) 9999-9999
+                        </p>
+                        <p>
+                            <i class="bi bi-geo-alt me-2"></i>
+                            São Paulo, SP - Brasil
+                        </p>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <h6>Links Úteis</h6>
+                        <p><a href="dashboard.html">Dashboard</a></p>
+                        <p><a href="animal.html">Gestão de Animais</a></p>
+                        <p><a href="transacoes.html">Controle Financeiro</a></p>
+                        <p><a href="#suporte">Suporte Técnico</a></p>
+                    </div>
+                </div>
+                
+                <hr style="border-color: rgba(255,255,255,0.2);">
+                
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">
+                            © 2025 LNDigital Rural. Todos os direitos reservados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
-```
