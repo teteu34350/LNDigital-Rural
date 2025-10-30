@@ -217,49 +217,49 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'index' %}">
                     <i class="bi bi-house"></i>
                     Início
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
+                <a class="nav-link" href="{% url 'dashboard' %}">
                     <i class="bi bi-speedometer2"></i>
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="animal.html">
+                <a class="nav-link" href="{% url 'animais' %}">
                     <i class="bi bi-heart"></i>
                     Animais
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="transacoes.html">
+                <a class="nav-link" href="{% url 'transacoes' %}">
                     <i class="bi bi-currency-dollar"></i>
                     Transações
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pessoas.html">
+                <a class="nav-link" href="{% url 'pessoas' %}">
                     <i class="bi bi-people"></i>
                     Pessoas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="lavouras.html">
+                <a class="nav-link" href="{% url 'lavouras' %}">
                     <i class="bi bi-tree"></i>
                     Lavouras
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="estoque.html">
+                <a class="nav-link" href="{% url 'estoque' %}">
                     <i class="bi bi-box"></i>
                     Estoque
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="veiculos.html">
+                <a class="nav-link active" href="{% url 'veiculos' %}">
                     <i class="bi bi-truck"></i>
                     Veículos
                 </a>
@@ -347,14 +347,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for veiculo in veiculos %}
                             <tr>
-                                <td><strong>TR-001</strong></td>
-                                <td>Trator</td>
-                                <td>John Deere 6110J</td>
-                                <td>2020</td>
-                                <td>ABC-1234</td>
-                                <td><span class="badge badge-ativo">Ativo</span></td>
-                                <td>15/02/2025</td>
+                                <td><strong>{{ veiculo.id }}</strong></td>
+                                <td>{{ veiculo.modelo }}</td>
+                                <td>{{ veiculo.marca }}</td>
+                                <td>{{ veiculo.ano }}</td>
+                                <td>{{ veiculo.placa }}</td>
+                                <td>{{ veiculo.status }}</td>
+                                <td>{{ veiculo.observacoes|default:"-" }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary me-1">
                                         <i class="bi bi-eye"></i>
@@ -364,75 +365,14 @@
                                     </button>
                                 </td>
                             </tr>
+                            {% empty %}
                             <tr>
-                                <td><strong>CM-002</strong></td>
-                                <td>Caminhão</td>
-                                <td>Mercedes-Benz Atego</td>
-                                <td>2019</td>
-                                <td>DEF-5678</td>
-                                <td><span class="badge badge-manutencao">Manutenção</span></td>
-                                <td>Em andamento</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
+                                <td colspan="8" class="text-center">Nenhum veículo cadastrado.</td>
                             </tr>
-                            <tr>
-                                <td><strong>CO-003</strong></td>
-                                <td>Colheitadeira</td>
-                                <td>Case IH Axial-Flow</td>
-                                <td>2021</td>
-                                <td>GHI-9012</td>
-                                <td><span class="badge badge-ativo">Ativo</span></td>
-                                <td>10/03/2025</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>PU-004</strong></td>
-                                <td>Pulverizador</td>
-                                <td>Jacto Uniport 3030</td>
-                                <td>2018</td>
-                                <td>JKL-3456</td>
-                                <td><span class="badge badge-ativo">Ativo</span></td>
-                                <td>25/02/2025</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>TR-005</strong></td>
-                                <td>Trator</td>
-                                <td>New Holland T6.120</td>
-                                <td>2017</td>
-                                <td>MNO-7890</td>
-                                <td><span class="badge badge-manutencao">Manutenção</span></td>
-                                <td>Em andamento</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                            {% endfor %}
+                            </tbody>
+                            
+                            
                     </table>
                 </div>
                 

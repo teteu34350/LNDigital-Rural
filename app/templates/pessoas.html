@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LNDigital Rural - Pessoas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-green: #4a7c59;
@@ -39,7 +40,7 @@
         .sidebar .logo {
             padding: 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .sidebar .logo i {
@@ -53,7 +54,7 @@
         }
 
         .sidebar .nav-link {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             padding: 12px 20px;
             border: none;
             border-radius: 0;
@@ -62,7 +63,7 @@
 
         .sidebar .nav-link:hover,
         .sidebar .nav-link.active {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
 
@@ -83,7 +84,7 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .content {
@@ -94,7 +95,7 @@
             background: white;
             border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-left: 4px solid var(--primary-green);
             margin-bottom: 20px;
         }
@@ -115,7 +116,7 @@
             background: white;
             border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
@@ -167,8 +168,9 @@
             margin-bottom: 15px;
         }
 
-        .footer p, .footer a {
-            color: rgba(255,255,255,0.8);
+        .footer p,
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 0.9rem;
         }
@@ -178,7 +180,7 @@
         }
 
         .social-links a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 1.5rem;
             margin-right: 15px;
             transition: color 0.3s ease;
@@ -193,21 +195,22 @@
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
             }
-            
+
             .sidebar.show {
                 transform: translateX(0);
             }
-            
+
             .main-content {
                 margin-left: 0;
             }
-            
+
             .content {
                 padding: 20px 15px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Sidebar -->
     <nav class="sidebar">
@@ -217,49 +220,49 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'index' %}">
                     <i class="bi bi-house"></i>
                     Início
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
+                <a class="nav-link" href="{% url 'dashboard' %}">
                     <i class="bi bi-speedometer2"></i>
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="animal.html">
+                <a class="nav-link" href="{% url 'animais' %}">
                     <i class="bi bi-heart"></i>
                     Animais
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="transacoes.html">
+                <a class="nav-link" href="{% url 'transacoes' %}">
                     <i class="bi bi-currency-dollar"></i>
                     Transações
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="pessoas.html">
+                <a class="nav-link active" href="{% url 'pessoas' %}">
                     <i class="bi bi-people"></i>
                     Pessoas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="lavouras.html">
+                <a class="nav-link" href="{% url 'lavouras' %}">
                     <i class="bi bi-tree"></i>
                     Lavouras
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="estoque.html">
+                <a class="nav-link" href="{% url 'estoque' %}">
                     <i class="bi bi-box"></i>
                     Estoque
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="veiculos.html">
+                <a class="nav-link" href="{% url 'veiculos' %}">
                     <i class="bi bi-truck"></i>
                     Veículos
                 </a>
@@ -286,25 +289,25 @@
             <div class="row mb-4">
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <h3>45</h3>
+                        <h3>{{ total_funcionarios }}</h3>
                         <p>Funcionários</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <h3>28</h3>
+                        <h3>{{ total_fornecedores }}</h3>
                         <p>Fornecedores</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <h3>156</h3>
+                        <h3>{{ total_clientes }}</h3>
                         <p>Clientes</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <h3>229</h3>
+                        <h3>{{ total_pessoas }}</h3>
                         <p>Total de Pessoas</p>
                     </div>
                 </div>
@@ -321,10 +324,11 @@
                             <option>Fornecedores</option>
                             <option>Clientes</option>
                         </select>
-                        <input type="text" class="form-control form-control-sm" placeholder="Buscar pessoa..." style="width: 200px;">
+                        <input type="text" class="form-control form-control-sm" placeholder="Buscar pessoa..."
+                            style="width: 200px;">
                     </div>
                 </div>
-                
+
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="table-light">
@@ -339,92 +343,70 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for pessoa in pessoas %}
                             <tr>
-                                <td><strong>João Silva Santos</strong></td>
-                                <td><span class="badge badge-funcionario">Funcionário</span></td>
-                                <td>123.456.789-00</td>
-                                <td>(11) 99999-1234</td>
-                                <td>joao.silva@email.com</td>
-                                <td>São Paulo, SP</td>
+                                <td><strong>{{ pessoa.nome }}</strong></td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                    {% if pessoa.tipo == "Funcionário" %}
+                                    <span class="badge badge-funcionario">Funcionário</span>
+                                    {% elif pessoa.tipo == "Fornecedor" %}
+                                    <span class="badge badge-fornecedor">Fornecedor</span>
+                                    {% else %}
+                                    <span class="badge badge-cliente">Cliente</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ pessoa.cpf }}</td>
+                                <td>{{ pessoa.telefone }}</td>
+                                <td>{{ pessoa.email }}</td>
+                                <td>{{ pessoa.cidade }}, {{ pessoa.estado }}</td>
+                                <td>
+                                    <!-- Botão visualizar -->
+                                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal"
+                                        data-bs-target="#viewPersonModal" data-nome="{{ pessoa.nome }}"
+                                        data-tipo="{{ pessoa.tipo }}" data-cpf="{{ pessoa.cpf }}"
+                                        data-telefone="{{ pessoa.telefone }}" data-email="{{ pessoa.email }}"
+                                        data-endereco="{{ pessoa.endereco }}" data-cidade="{{ pessoa.cidade }}"
+                                        data-estado="{{ pessoa.estado }}">
                                         <i class="bi bi-eye"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
+                                
+                                    <!-- Botão editar -->
+                                    <button class="btn btn-sm btn-outline-secondary me-1" data-bs-toggle="modal"
+                                        data-bs-target="#addPersonModal" data-id="{{ pessoa.id }}"
+                                        data-nome="{{ pessoa.nome }}" data-tipo="{{ pessoa.tipo }}"
+                                        data-cpf="{{ pessoa.cpf }}" data-telefone="{{ pessoa.telefone }}"
+                                        data-email="{{ pessoa.email }}" data-endereco="{{ pessoa.endereco }}"
+                                        data-cidade="{{ pessoa.cidade }}" data-estado="{{ pessoa.estado }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
+                        
+                                    <!-- Botão excluir -->
+                                    <form method="POST" action="{% url 'excluir_pessoa' pessoa.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                onclick="return confirm('Tem certeza que deseja excluir esta pessoa?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
+                            {% empty %}
                             <tr>
-                                <td><strong>Agropecuária Campos Ltda</strong></td>
-                                <td><span class="badge badge-fornecedor">Fornecedor</span></td>
-                                <td>12.345.678/0001-90</td>
-                                <td>(11) 3333-5678</td>
-                                <td>vendas@agrocampos.com.br</td>
-                                <td>Campinas, SP</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
+                                <td colspan="7" class="text-center">Nenhuma pessoa cadastrada.</td>
                             </tr>
-                            <tr>
-                                <td><strong>Maria Oliveira Costa</strong></td>
-                                <td><span class="badge badge-cliente">Cliente</span></td>
-                                <td>987.654.321-00</td>
-                                <td>(11) 98888-5432</td>
-                                <td>maria.costa@email.com</td>
-                                <td>Ribeirão Preto, SP</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Carlos Eduardo Pereira</strong></td>
-                                <td><span class="badge badge-funcionario">Funcionário</span></td>
-                                <td>456.789.123-00</td>
-                                <td>(11) 97777-9876</td>
-                                <td>carlos.pereira@email.com</td>
-                                <td>Piracicaba, SP</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Fertilizantes Brasil S.A.</strong></td>
-                                <td><span class="badge badge-fornecedor">Fornecedor</span></td>
-                                <td>98.765.432/0001-10</td>
-                                <td>(11) 4444-1234</td>
-                                <td>comercial@fertbrasil.com.br</td>
-                                <td>São José dos Campos, SP</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
+                        
+
+
                     </table>
                 </div>
+           
                 
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="text-muted">Mostrando 5 de 229 pessoas</span>
+                    <span class="text-muted">
+                        Mostrando {{ pessoas|length }} de {{ total_pessoas }} pessoas
+                    </span>
                     <nav>
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled">
@@ -455,7 +437,7 @@
                     <div class="col-md-4 mb-4">
                         <h6>LNDigital Rural</h6>
                         <p>
-                            Tecnologia inovadora para a gestão completa da sua propriedade rural. 
+                            Tecnologia inovadora para a gestão completa da sua propriedade rural.
                             Simplifique processos e maximize resultados.
                         </p>
                         <div class="social-links">
@@ -465,7 +447,7 @@
                             <a href="#"><i class="bi bi-youtube"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4 mb-4">
                         <h6>Contato</h6>
                         <p>
@@ -481,7 +463,7 @@
                             São Paulo, SP - Brasil
                         </p>
                     </div>
-                    
+
                     <div class="col-md-4 mb-4">
                         <h6>Links Úteis</h6>
                         <p><a href="dashboard.html">Dashboard</a></p>
@@ -490,9 +472,9 @@
                         <p><a href="#suporte">Suporte Técnico</a></p>
                     </div>
                 </div>
-                
+
                 <hr style="border-color: rgba(255,255,255,0.2);">
-                
+
                 <div class="row">
                     <div class="col-12 text-center">
                         <p class="mb-0">
@@ -513,18 +495,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="mb-3">
                                     <label class="form-label">Nome Completo / Razão Social</label>
-                                    <input type="text" class="form-control" placeholder="Nome da pessoa ou empresa">
+                                    <input type="text" name="nome" class="form-control"
+                                        placeholder="Nome da pessoa ou empresa" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label">Tipo</label>
-                                    <select class="form-select">
+                                    <select class="form-select" name="tipo" required>
                                         <option>Funcionário</option>
                                         <option>Fornecedor</option>
                                         <option>Cliente</option>
@@ -536,70 +520,158 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">CPF / CNPJ</label>
-                                    <input type="text" class="form-control" placeholder="000.000.000-00">
+                                    <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Telefone</label>
-                                    <input type="text" class="form-control" placeholder="(11) 99999-9999">
+                                    <input type="text" name="telefone" class="form-control"
+                                        placeholder="(11) 99999-9999">
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="email@exemplo.com">
+                            <input type="email" name="email" class="form-control" placeholder="email@exemplo.com">
                         </div>
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="mb-3">
                                     <label class="form-label">Endereço</label>
-                                    <input type="text" class="form-control" placeholder="Rua, número">
+                                    <input type="text" name="endereco" class="form-control" placeholder="Rua, número">
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label class="form-label">CEP</label>
-                                    <input type="text" class="form-control" placeholder="00000-000">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
                                 <div class="mb-3">
                                     <label class="form-label">Cidade</label>
-                                    <input type="text" class="form-control" placeholder="Cidade">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label class="form-label">Estado</label>
-                                    <select class="form-select">
-                                        <option>SP</option>
-                                        <option>RJ</option>
-                                        <option>MG</option>
-                                        <option>RS</option>
-                                        <option>PR</option>
-                                        <option>SC</option>
-                                        <option>GO</option>
-                                        <option>MT</option>
-                                        <option>MS</option>
-                                        <option>BA</option>
-                                    </select>
+                                    <input type="text" name="cidade" class="form-control" placeholder="Cidade">
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">Estado</label>
+                                <select class="form-select" name="estado">
+                                    <option>SP</option>
+                                    <option>RJ</option>
+                                    <option>MG</option>
+                                    <option>RS</option>
+                                    <option>PR</option>
+                                    <option>SC</option>
+                                    <option>GO</option>
+                                    <option>MT</option>
+                                    <option>MS</option>
+                                    <option>BA</option>
+                                </select>
+                            </div><input type="hidden" name="pessoa_id" id="pessoa_id">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary-custom">Salvar Pessoa</button>
+                        </div>
                     </form>
+
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary-custom">Salvar Pessoa</button>
-                </div>
+
             </div>
         </div>
     </div>
+    <!-- View Person Modal -->
+<div class="modal fade" id="viewPersonModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalhes da Pessoa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row mb-2">
+            <div class="col-md-6"><strong>Nome:</strong> <span id="view-nome"></span></div>
+            <div class="col-md-6"><strong>Tipo:</strong> <span id="view-tipo"></span></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-6"><strong>CPF/CNPJ:</strong> <span id="view-cpf"></span></div>
+            <div class="col-md-6"><strong>Telefone:</strong> <span id="view-telefone"></span></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-6"><strong>Email:</strong> <span id="view-email"></span></div>
+            <div class="col-md-6"><strong>Endereço:</strong> <span id="view-endereco"></span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><strong>Cidade:</strong> <span id="view-cidade"></span></div>
+            <div class="col-md-6"><strong>Estado:</strong> <span id="view-estado"></span></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var viewModal = document.getElementById('viewPersonModal');
+        viewModal.addEventListener('show.bs.modal', function (event) {
+          var button = event.relatedTarget;
+        
+          document.getElementById('view-nome').textContent = button.getAttribute('data-nome');
+          document.getElementById('view-tipo').textContent = button.getAttribute('data-tipo');
+          document.getElementById('view-cpf').textContent = button.getAttribute('data-cpf');
+          document.getElementById('view-telefone').textContent = button.getAttribute('data-telefone');
+          document.getElementById('view-email').textContent = button.getAttribute('data-email');
+          document.getElementById('view-endereco').textContent = button.getAttribute('data-endereco');
+          document.getElementById('view-cidade').textContent = button.getAttribute('data-cidade');
+          document.getElementById('view-estado').textContent = button.getAttribute('data-estado');
+        });
+        </script>
+        
 </body>
+
 </html>
+<script>
+    var addPersonModal = document.getElementById('addPersonModal')
+
+    addPersonModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+
+        // Campos do modal
+        var pessoa_id = addPersonModal.querySelector('#pessoa_id')
+        var nome = addPersonModal.querySelector('input[name="nome"]')
+        var tipo = addPersonModal.querySelector('select[name="tipo"]')
+        var cpf = addPersonModal.querySelector('input[name="cpf"]')
+        var telefone = addPersonModal.querySelector('input[name="telefone"]')
+        var email = addPersonModal.querySelector('input[name="email"]')
+        var endereco = addPersonModal.querySelector('input[name="endereco"]')
+        var cidade = addPersonModal.querySelector('input[name="cidade"]')
+        var estado = addPersonModal.querySelector('select[name="estado"]')
+
+        if (button.dataset.id) {
+            // Editando pessoa
+            pessoa_id.value = button.dataset.id
+            nome.value = button.dataset.nome
+            tipo.value = button.dataset.tipo
+            cpf.value = button.dataset.cpf
+            telefone.value = button.dataset.telefone
+            email.value = button.dataset.email
+            endereco.value = button.dataset.endereco
+            cidade.value = button.dataset.cidade
+            estado.value = button.dataset.estado
+        } else {
+            // Novo cadastro
+            pessoa_id.value = ''
+            nome.value = ''
+            tipo.value = 'Funcionário'
+            cpf.value = ''
+            telefone.value = ''
+            email.value = ''
+            endereco.value = ''
+            cidade.value = ''
+            estado.value = 'SP'
+        }
+    })
     
+</script>

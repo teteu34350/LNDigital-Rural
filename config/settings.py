@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
+    'app',  # ✅ o nome correto do seu app
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -78,7 +77,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # mudar de sqlite3 para postgresql
-        'NAME': 'LNDR',       # nome do banco que você criou no pgAdmin
+        'NAME': 'lndr',       # nome do banco que você criou no pgAdmin
         'USER': 'postgres',   # seu usuário do PostgreSQL
         'PASSWORD': '123456', # sua senha
         'HOST': 'localhost',  # ou IP do servidor do PostgreSQL

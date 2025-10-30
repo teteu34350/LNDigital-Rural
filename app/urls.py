@@ -9,5 +9,12 @@ urlpatterns = [
     path('estoque/', views.estoque, name='estoque'),
     path('pessoas/', views.pessoas, name='pessoas'),
     path('veiculos/', views.veiculos, name='veiculos'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('login/', views.login, name='login'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('pessoas/excluir/<int:id>/', views.excluir_pessoa, name='excluir_pessoa'),
+    path('animais/excluir/<int:id>/', views.excluir_animal, name='excluir_animal'),
+
+
 ]
 
